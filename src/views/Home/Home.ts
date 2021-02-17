@@ -21,7 +21,7 @@ export default Vue.extend({
             this.snackLogout = true;
             setTimeout(() => {
                 this.$router.push('/');
-            }, 1000);
+            }, 1500);
         }
     },
 });

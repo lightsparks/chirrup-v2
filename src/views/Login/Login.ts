@@ -23,7 +23,11 @@ export default Vue.extend({
             snackLogin: false,
             snackLoginTxt: "Login succesful!",
             snackRegistration: false,
-            snackRegistrationTxt: "User registration succesful!"
+            snackRegistrationTxt: "User registration succesful!",
+            snackLoginError: false,
+            snackLoginErrorTxt: "Unknown email/password combination. Please try again.",
+            snackRegisterError: false,
+            snackRegisterErrorTxt: "One or more fields have an error. Please check and try again.",
         };
     },
     mounted: function () {
@@ -49,9 +53,10 @@ export default Vue.extend({
                     this.snackRegistration = true;
                     setTimeout(() => {
                         this.step = 1;
-                    }, 1000);
+                    }, 1500);
                 }).catch(function (error: any) {
                 console.log(error);
+                this.snackRegisterError = true;
                 /*TODO: password_confirmation moet ook echt valideren*/
             });
         },
@@ -63,9 +68,10 @@ export default Vue.extend({
                     this.snackLogin = true;
                     setTimeout(() => {
                         this.$router.push("Home");
-                    }, 1000);
+                    }, 1500);
                 }).catch(function (error: any) {
                 console.log(error);
+                this.snackLoginError = true;
             });
         },
     }

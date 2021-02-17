@@ -12,6 +12,8 @@
         </v-row>
         <v-snackbar
                 v-model="this.snackLogout"
+                color="primary"
+                timeout="1200"
         >
             {{ this.snackLogoutTxt }}
         </v-snackbar>

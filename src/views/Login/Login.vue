@@ -124,7 +124,7 @@
                                                                 type="password"
                                                                 color="secondary"
                                                                 v-model="registerFormData.password_confirmation"
-                                                                :rules="[formRules.required, formRules.minChars(8), formRules.maxChars(16),]"
+                                                                :rules="[!!registerFormData.password_confirmation || 'type confirm password', registerFormData.password_confirmation === registerFormData.password || 'The password confirmation does not match.']"
                                                                 validate-on-blur
                                                         />
                                                     </v-col>
@@ -143,13 +143,15 @@
             </v-row>
             <v-snackbar
                     v-model="this.snackLogin"
-                    color="succes"
+                    color="primary"
+                    timeout="1200"
             >
                 {{ this.snackLoginTxt }}
             </v-snackbar>
             <v-snackbar
                     v-model="this.snackRegistration"
-                    color="succes"
+                    color="primary"
+                    timeout="1200"
             >
                 {{ this.snackRegistrationTxt }}
             </v-snackbar>
