@@ -6,6 +6,8 @@
       <v-app-bar-title shrink-on-scroll><h1 class="display-1">Chirrup 2.0</h1></v-app-bar-title>
     </v-app-bar>
 
+<!--TODO: navigation drawer-->
+
     <!-- Sizes your content based upon application components -->
     <v-main id="main">
 

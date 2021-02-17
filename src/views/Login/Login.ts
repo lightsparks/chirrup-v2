@@ -57,7 +57,6 @@ export default Vue.extend({
                 }).catch(function (error: any) {
                 console.log(error);
                 this.snackRegisterError = true;
-                /*TODO: password_confirmation moet ook echt valideren*/
             });
         },
         loginUser: function () {
