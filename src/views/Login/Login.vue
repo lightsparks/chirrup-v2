@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <!--        <v-content>-->
-        <v-container>
+        <v-container fluid>
             <v-row align="center" justify="center">
                 <v-col cols="12" sm="12" md="12">
                     <v-card class="elevation-12">
@@ -142,18 +142,20 @@
                 </v-col>
             </v-row>
             <v-snackbar
-                    v-model="this.snackLogin"
-                    color="primary"
+                    class="text-center mb-6"
+                    v-model="snackLogin"
+                    color="success"
                     timeout="1200"
             >
-                {{ this.snackLoginTxt }}
+                Login succesful!
             </v-snackbar>
             <v-snackbar
-                    v-model="this.snackRegistration"
-                    color="primary"
+                    class="text-center mb-6"
+                    v-model="snackRegistration"
+                    color="success"
                     timeout="1200"
             >
-                {{ this.snackRegistrationTxt }}
+                User registration succesful!
             </v-snackbar>
         </v-container>
         <!--        </v-content>-->

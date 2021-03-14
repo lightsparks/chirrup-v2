@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Login from '@/views/Login/Login.vue'
-import Logout from '@/views/Logout/Logout'
+import Logout from '@/views/Logout/Logout.vue'
 import Home from '../views/Home.vue'
+import SendNewMessage from "@/views/NewMessage/NewMessage";
+import NewMessage from "@/views/NewMessage/NewMessage";
 /*import VueTimeago from 'vue-timeago';*/
 
 Vue.use(VueRouter)
@@ -34,6 +36,12 @@ const routes: Array<RouteConfig> = [
     component: () =>
         import(/* webpackChunkName: "Home" */ '../views/Home/Home.vue'),
     meta: {requiresAuth: true, navigation: true}
+  },
+  {
+    path: "/NewMessage",
+    name: "NewMessage",
+    component: () =>
+        import(/* webpackChunkName: "NewMessage" */ '../views/NewMessage/NewMessage.vue')
   },
   {
     path: "/Logout",

@@ -15,11 +15,14 @@ export default Vue.extend({
         },
         logOut: function () {
             localStorage.removeItem('token');
+
             this.snackLogout = true;
             setTimeout(() => {
                 this.$router.push('/');
             }, 1000);
-        }
+
+            this.$store.commit('setToken', null);
+        },
     }
 });
 

@@ -21,9 +21,7 @@ export default Vue.extend({
             },
             registerFormData: {} as FormData,
             snackLogin: false,
-            snackLoginTxt: "Login succesful!",
             snackRegistration: false,
-            snackRegistrationTxt: "User registration succesful!",
             snackLoginError: false,
             snackLoginErrorTxt: "Unknown email/password combination. Please try again.",
             snackRegisterError: false,
@@ -64,10 +62,14 @@ export default Vue.extend({
                 .then((response) => {
                     console.log(response);
                     localStorage.setItem("token", JSON.stringify(response.data));
+
                     this.snackLogin = true;
                     setTimeout(() => {
                         this.$router.push("Home");
-                    }, 1500);
+                    }, 1000);
+
+                    this.$store.commit('setToken', JSON.stringify(response.data));
+
                 }).catch(function (error: any) {
                 console.log(error);
                 this.snackLoginError = true;
