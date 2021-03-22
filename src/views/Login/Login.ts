@@ -1,5 +1,6 @@
 import Vue from "vue";
 import FormRules from "@/partials/FormRules.ts";
+import AuthResponse from "@/interfaces/AuthResponse";
 
 declare interface FormData {
     first_name: string;
@@ -24,7 +25,7 @@ export default Vue.extend({
             snackRegistration: false,
             snackLoginError: false,
             snackLoginErrorTxt: "Unknown email/password combination. Please try again.",
-            snackRegisterError: false,
+            snackRegisterError: false as boolean,
             snackRegisterErrorTxt: "One or more fields have an error. Please check and try again.",
         };
     },
@@ -52,7 +53,7 @@ export default Vue.extend({
                     setTimeout(() => {
                         this.step = 1;
                     }, 1500);
-                }).catch(function (error: any) {
+                }).catch((error: any) => {
                 console.log(error);
                 this.snackRegisterError = true;
             });
@@ -61,16 +62,17 @@ export default Vue.extend({
             Vue.axios.post("http://twitterclone-dev.tk/api/auth/login", this.loginFormData)
                 .then((response) => {
                     console.log(response);
-                    localStorage.setItem("token", JSON.stringify(response.data));
+                    const tokenData = response.data as AuthResponse;
+                    localStorage.setItem("token", tokenData.access_token);
 
                     this.snackLogin = true;
                     setTimeout(() => {
                         this.$router.push("Home");
                     }, 1000);
 
-                    this.$store.commit('setToken', JSON.stringify(response.data));
+                    this.$store.commit('setToken', tokenData.access_token);
 
-                }).catch(function (error: any) {
+                }).catch((error: any) => {
                 console.log(error);
                 this.snackLoginError = true;
             });

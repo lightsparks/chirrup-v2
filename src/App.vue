@@ -8,7 +8,7 @@
                 <v-container class="d-flex flex-row-reverse pr-0" v-if="$store.state.token !== null">
                     <v-icon class="pr-2 ml-2 mr-0" @click.stop="toLogout">fas fa-sign-out-alt</v-icon>
                     <v-icon class="pr-2 ml-2" @click.stop="toNewMessage">fas fa-send</v-icon>
-                    <v-icon class="pr-2 ml-2">fas fa-users</v-icon>
+                    <v-icon class="pr-2 ml-2" @click.stop="toFriends">fas fa-users</v-icon>
                     <v-icon class="pr-2 ml-2">fas fa-user-circle</v-icon>
                 </v-container>
             </v-container>

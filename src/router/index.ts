@@ -3,25 +3,19 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import Login from '@/views/Login/Login.vue'
 import Logout from '@/views/Logout/Logout.vue'
 import Home from '../views/Home.vue'
-import SendNewMessage from "@/views/NewMessage/NewMessage";
-import NewMessage from "@/views/NewMessage/NewMessage";
-/*import VueTimeago from 'vue-timeago';*/
+import NewMessage from "@/views/NewMessage/NewMessage.vue";
+import Friends from "@/views/Friends/Friends.vue";
+import FindFriends from "@/views/FindFriends/FindFriends.vue";
+import VueTimeago from 'vue-timeago';
 
 Vue.use(VueRouter)
 
-/*
-
 Vue.use(VueTimeago, {
-  name: 'Timeago', // Component name, `Timeago` by default
-  locale: 'en', // Default locale
-  // We use `date-fns` under the hood
-  // So you can use all locales from it
+  locale: 'en',
   locales: {
-    'zh-CN': require('date-fns/locale/zh_cn'),
-    ja: require('date-fns/locale/ja')
+    'zh-CN': require('date-fns/locale/zh_cn')
   }
 })
-*/
 
 
 const routes: Array<RouteConfig> = [
@@ -42,6 +36,20 @@ const routes: Array<RouteConfig> = [
     name: "NewMessage",
     component: () =>
         import(/* webpackChunkName: "NewMessage" */ '../views/NewMessage/NewMessage.vue')
+  },
+  {
+    path: "/Friends",
+    name: "Friends",
+    component: () =>
+        import(/* webpackChunkName: "Friends" */ '../views/Friends/Friends.vue'),
+    meta: {requiresAuth: true, navigation: true}
+  },
+  {
+    path: "/FindFriends",
+    name: "FindFriends",
+    component: () =>
+        import(/* webpackChunkName: "FindFriends" */ '../views/FindFriends/FindFriends.vue'),
+    meta: {requiresAuth: true, navigation: true}
   },
   {
     path: "/Logout",

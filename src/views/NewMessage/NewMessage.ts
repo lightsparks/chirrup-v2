@@ -1,4 +1,5 @@
 import Vue from "vue";
+import axios from "axios";
 
 export default Vue.extend({
     name: 'NewMessage',
@@ -9,13 +10,14 @@ export default Vue.extend({
             },
             snackMessage: false
         };
+
     },
     mounted: function () {
         //
     },
     methods: {
         postMessage: function () {
-            Vue.axios.post("http://twitterclone-dev.tk/api/messages", this.message)
+            axios.post("http://twitterclone-dev.tk/api/messages", this.message, this.$store.state.apiconfig)
                 .then((response) => {
                     console.log(response);
                     this.snackMessage = true;

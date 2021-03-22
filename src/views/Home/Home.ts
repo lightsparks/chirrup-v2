@@ -6,13 +6,14 @@ export default Vue.extend({
             url: "http://twitterclone-dev.tk/",
             success: false,
             loading: true,
-            messageData: [],
+            messages: [],
             messagesError: {}
         }
     },
 
     mounted: function() {
         this.getMessages();
+
     },
 
     methods: {
@@ -20,11 +21,10 @@ export default Vue.extend({
             this.$router.push('/Logout');
         },
         getMessages: function () {
-            Vue.axios.get("http://twitterclone-dev.tk/api/messages")
+            Vue.axios.get("http://twitterclone-dev.tk/api/messages", this.$store.state.apiconfig)
                 .then((response) => {
-                    console.log(response);
-                    this.messageData = response.data;
-                    this.messageData.reverse();
+                    /*console.log(response);*/
+                    this.messages = response.data;
                 }).catch(error => {
                     this.messagesError = error.response.data ? error.response.data : "";
                     console.log(this.messagesError);

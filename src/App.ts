@@ -9,8 +9,7 @@ export default Vue.extend({
     },
     mounted: function () {
         if(localStorage.getItem('token') !== null){
-            const localstorage = JSON.parse(localStorage.getItem('token') || '') as {token: string};
-            this.$store.commit('setToken', localstorage.token);
+            this.$store.commit('setToken', localStorage.getItem('token'));
 
             this.$router.push('/Home');
         }
@@ -28,6 +27,9 @@ export default Vue.extend({
         },
         toNewMessage: function () {
             this.$router.push('/NewMessage');
+        },
+        toFriends: function () {
+            this.$router.push('/Friends');
         }
     }
 });
