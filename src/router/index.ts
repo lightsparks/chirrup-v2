@@ -27,28 +27,24 @@ const routes: Array<RouteConfig> = [
   {
     path: "/Home",
     name: "Home",
-    component: () =>
-        import(/* webpackChunkName: "Home" */ '../views/Home/Home.vue'),
+    component: Home,
     meta: {requiresAuth: true, navigation: true}
   },
   {
     path: "/NewMessage",
     name: "NewMessage",
-    component: () =>
-        import(/* webpackChunkName: "NewMessage" */ '../views/NewMessage/NewMessage.vue')
+    component: NewMessage
   },
   {
     path: "/Friends",
     name: "Friends",
-    component: () =>
-        import(/* webpackChunkName: "Friends" */ '../views/Friends/Friends.vue'),
+    component: Friends,
     meta: {requiresAuth: true, navigation: true}
   },
   {
     path: "/FindFriends",
     name: "FindFriends",
-    component: () =>
-        import(/* webpackChunkName: "FindFriends" */ '../views/FindFriends/FindFriends.vue'),
+    component: FindFriends,
     meta: {requiresAuth: true, navigation: true}
   },
   {

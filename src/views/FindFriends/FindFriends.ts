@@ -5,6 +5,7 @@ declare interface SearchData {
 }
 
 export default Vue.extend({
+    name: 'FindFriends',
     data() {
         return {
             url: "http://twitterclone-dev.tk/",

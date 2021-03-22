@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
+    name: 'Friends',
     data() {
         return {
             url: "http://twitterclone-dev.tk/",
