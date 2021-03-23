@@ -12,26 +12,25 @@ export default Vue.extend({
             success: false,
             loading: true,
             searchForm: {} as SearchData,
-            usersList: () => [],
-            usersListError: {}
+            userList: () => [],
+            userListError: {}
         }
     },
 
-    mounted: function() {
+    mounted: function () {
         //
     },
 
     methods: {
         searchUsers: function () {
-            this.usersList = [],
-                Vue.axios.get("http://twitterclone-dev.tk/api/users/find", this.searchForm, this.$store.state.apiconfig)
-                    .then((response) => {
-                        console.log(response);
-                        this.usersList = response.data;
-                    }).catch(error => {
-                    this.userListError = error.response.data ? error.response.data : "";
-                    console.log(this.userListError);
-                });
+            Vue.axios.get("http://twitterclone-dev.tk/api/users/find", this.searchForm)
+                .then((response) => {
+                    console.log(response);
+                    this.userList = response.data;
+                }).catch(error => {
+                this.userListError = error.response.data ? error.response.data : "";
+                console.log(this.userListError);
+            });
         }
     }
 });

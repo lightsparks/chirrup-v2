@@ -20,7 +20,7 @@ export default Vue.extend({
         getFriends: function () {
             Vue.axios.get("http://twitterclone-dev.tk/api/friends", this.$store.state.apiconfig)
                 .then((response) => {
-                    /*console.log(response);*/
+                    console.log(response);
                     this.friends = response.data;
                 }).catch(error => {
                 this.friendsError = error.response.data ? error.response.data : "";
@@ -28,7 +28,7 @@ export default Vue.extend({
             });
         },
         toSearchUser: function () {
-            this.$router.push("Find Friends");
+            this.$router.push("FindFriends");
         }
     }
 });

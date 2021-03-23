@@ -14,13 +14,9 @@ export default Vue.extend({
 
     mounted: function() {
         this.getMessages();
-
     },
 
     methods: {
-        moveToLogout: function () {
-            this.$router.push('/Logout');
-        },
         getMessages: function () {
             Vue.axios.get("http://twitterclone-dev.tk/api/messages", this.$store.state.apiconfig)
                 .then((response) => {

@@ -2,20 +2,20 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Login from '@/views/Login/Login.vue'
 import Logout from '@/views/Logout/Logout.vue'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home/Home.vue'
 import NewMessage from "@/views/NewMessage/NewMessage.vue";
 import Friends from "@/views/Friends/Friends.vue";
-import FindFriends from "@/views/FindFriends/FindFriends.vue";
-import VueTimeago from 'vue-timeago';
+/*import VueTimeago from 'vue-timeago';*/
+import FindFriends from "@/views/FindFriends/FindFriends";
 
 Vue.use(VueRouter)
 
-Vue.use(VueTimeago, {
+/*Vue.use(VueTimeago, {
   locale: 'en',
   locales: {
     'zh-CN': require('date-fns/locale/zh_cn')
   }
-})
+})*/
 
 
 const routes: Array<RouteConfig> = [

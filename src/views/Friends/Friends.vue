@@ -10,13 +10,13 @@
 
                 <v-list>
                     <v-list-item
-                            v-for="item in this.friends"
-                            :key="item.id"
+                            v-for="friend in this.friends"
+                            :key="friend.id"
                             class="d-flex justify-center mb-3"
                     >
                         <v-card class="elevation-12 width-2" fluid>
-                            <v-card-title>{{ item.user.first_name }} {{ item.user.last_name }}</v-card-title>
-                            <v-card-subtitle>{{ item.id }}</v-card-subtitle>
+                            <v-card-title>{{ friend.user.first_name }} {{ friend.user.last_name }}</v-card-title>
+                            <v-card-subtitle>{{ friend.id }}</v-card-subtitle>
                             <v-card-actions></v-card-actions>
                         </v-card>
                     </v-list-item>

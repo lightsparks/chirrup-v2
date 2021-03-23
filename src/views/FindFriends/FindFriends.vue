@@ -4,27 +4,31 @@
 
         <v-form>
             <v-text-field
-                    label="search friends"
-                    name="search_string"
+                    id="search_user"
+                    label="Search for name or email"
+                    name="Search for name or email"
                     prepend-icon="fas fa-search"
                     type="text"
                     color="secondary"
-                    v-model="this.searchForm"
+                    v-model="this.searchForm.search_string"
             />
         </v-form>
+        <v-container class="d-flex justify-center">
+            <v-btn rounded color="primary" @click.prevent="searchUsers">Search</v-btn>
+        </v-container>
 
         <v-row align="center" justify="center">
             <v-col>
 
                 <v-list>
                     <v-list-item
-                            v-for="item in this.friends"
-                            :key="item.id"
+                            v-for="user in this.userList"
+                            :key="user.id"
                             class="d-flex justify-center mb-3"
                     >
                         <v-card class="elevation-12 width-2" fluid>
-                            <v-card-title>{{ item.user.first_name }} {{ item.user.last_name }}</v-card-title>
-                            <v-card-subtitle>{{ item.id }}</v-card-subtitle>
+                            <v-card-title>{{ user.user.first_name }} {{ user.user.last_name }}</v-card-title>
+                            <v-card-subtitle>{{ user.id }}</v-card-subtitle>
                             <v-card-actions></v-card-actions>
                         </v-card>
                     </v-list-item>
