@@ -10,7 +10,9 @@
                     prepend-icon="fas fa-search"
                     type="text"
                     color="secondary"
-                    v-model="this.searchForm.search_string"
+                    :rules="[formRules.required, formRules.minChars(3), formRules.maxChars(26)]"
+                    validate-on-blur
+                    v-model="searchForm.search_string"
             />
         </v-form>
         <v-container class="d-flex justify-center">
@@ -26,16 +28,26 @@
                             :key="user.id"
                             class="d-flex justify-center mb-3"
                     >
-                        <v-card class="elevation-12 width-2" fluid>
-                            <v-card-title>{{ user.user.first_name }} {{ user.user.last_name }}</v-card-title>
-                            <v-card-subtitle>{{ user.id }}</v-card-subtitle>
-                            <v-card-actions></v-card-actions>
+                        <v-card class="elevation-12" min-width="320">
+                            <v-card-title>{{ user.first_name }} {{ user.last_name }}</v-card-title>
+                            <v-card-subtitle>{{ user.email }}</v-card-subtitle>
+                            <v-card-actions>
+                                <v-btn color="primary" @click.prevent="makeConnection(user.id)">Connect</v-btn>
+                            </v-card-actions>
                         </v-card>
                     </v-list-item>
                 </v-list>
 
             </v-col>
         </v-row>
+        <v-snackbar
+                class="text-center mb-6"
+                v-model="snackConnect"
+                color="success"
+                timeout="1200"
+        >
+            You connected with your friend!
+        </v-snackbar>
     </v-container>
 </template>
 

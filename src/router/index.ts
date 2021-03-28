@@ -5,18 +5,11 @@ import Logout from '@/views/Logout/Logout.vue'
 import Home from '@/views/Home/Home.vue'
 import NewMessage from "@/views/NewMessage/NewMessage.vue";
 import Friends from "@/views/Friends/Friends.vue";
-/*import VueTimeago from 'vue-timeago';*/
-import FindFriends from "@/views/FindFriends/FindFriends";
+import FindFriends from "@/views/FindFriends/FindFriends.vue";
+import Me from "@/views/Me/Me.vue";
+import UpdateUser from "@/views/UpdateUser/UpdateUser.vue";
 
 Vue.use(VueRouter)
-
-/*Vue.use(VueTimeago, {
-  locale: 'en',
-  locales: {
-    'zh-CN': require('date-fns/locale/zh_cn')
-  }
-})*/
-
 
 const routes: Array<RouteConfig> = [
   {
@@ -45,6 +38,18 @@ const routes: Array<RouteConfig> = [
     path: "/FindFriends",
     name: "FindFriends",
     component: FindFriends,
+    meta: {requiresAuth: true, navigation: true}
+  },
+  {
+    path: "/Me",
+    name: "Me",
+    component: Me,
+    meta: {requiresAuth: true, navigation: true}
+  },
+  {
+    path: "/UpdateUser",
+    name: "UpdateUser",
+    component: UpdateUser,
     meta: {requiresAuth: true, navigation: true}
   },
   {

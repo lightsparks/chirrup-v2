@@ -7,7 +7,7 @@ export default Vue.extend({
             isLoggedIn: false
         };
     },
-    mounted: function () {
+    beforeMount: function () {
         if(localStorage.getItem('token') !== null){
             this.$store.commit('setToken', localStorage.getItem('token'));
 
@@ -30,6 +30,9 @@ export default Vue.extend({
         },
         toFriends: function () {
             this.$router.push('/Friends');
+        },
+        toMe: function () {
+            this.$router.push('/Me');
         }
     }
 });

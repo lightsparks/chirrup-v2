@@ -11,9 +11,11 @@
                             :key="item.id"
                             class="d-flex justify-center mb-3"
                     >
-                        <v-card class="elevation-12 width-2" fluid>
+                        <v-card class="elevation-12" min-width="320">
                             <v-card-title>{{ item.user.first_name }} {{ item.user.last_name }}</v-card-title>
-                            <v-card-subtitle>{{ item.created_at }}</v-card-subtitle>
+                            <v-card-subtitle>
+                                <timeago :datetime="item.created_at" locale="nl"></timeago>
+                            </v-card-subtitle>
                             <v-card-text>{{ item.message }}</v-card-text>
                             <v-card-actions></v-card-actions>
                         </v-card>
