@@ -16,7 +16,7 @@ export default Vue.extend({
             userList: () => [],
             userListError: {},
             snackConnect: false,
-
+            message: ""
         }
     },
 
@@ -26,10 +26,14 @@ export default Vue.extend({
 
     methods: {
         searchUsers: function (url: string, config?: AxiosRequestConfig) {
+            this.message = "";
             Vue.axios.get("http://twitterclone-dev.tk/api/users/find?search_string=" + this.searchForm.search_string, this.$store.state.apiconfig)
                 .then((response) => {
                     console.log(response);
                     this.userList = response.data;
+                    if (this.userList.length === 0) {
+                        this.message = "No match found! Try again?";
+                    }
                 }).catch(error => {
                 this.userListError = error.response.data ? error.response.data : "";
                 console.log(this.userListError);

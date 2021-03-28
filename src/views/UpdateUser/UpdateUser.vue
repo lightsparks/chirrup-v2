@@ -1,8 +1,8 @@
 <template>
-    <v-container cols="12" sm="8" md="8">
+    <v-container cols="12" sm="8" md="8" align="center" justify="center">
         <h1 class="text-center display-2 primary--text mb-6">Update User Info</h1>
 
-        <v-row class="fill-height">
+        <v-row class="fill-height" align="center" justify="center">
             <v-col cols="12" md="8">
                 <v-card-text class="mt-6">
                     <v-form>
@@ -37,6 +37,7 @@
                                 prepend-icon="fas fa-envelope"
                                 type="text"
                                 color="secondary"
+                                :placeholder="userPatch.email"
                                 v-model="userPatch.email"
                                 :rules="[formRules.required, formRules.email]"
                                 validate-on-blur
@@ -49,6 +50,7 @@
                                         prepend-icon="fas fa-lock"
                                         type="password"
                                         color="secondary"
+                                        :placeholder="userPatch.password"
                                         v-model="userPatch.password"
                                         :rules="[formRules.required, formRules.minChars(8), formRules.maxChars(16)]"
                                         validate-on-blur
@@ -61,16 +63,17 @@
                                         type="password"
                                         color="secondary"
                                         v-model="userPatch.password_confirmation"
-                                        :rules="[!!registerFormData.password_confirmation || 'type confirm password', registerFormData.password_confirmation === registerFormData.password || 'The password confirmation does not match.']"
+                                        :rules="[formRules.required, userPatch.password_confirmation === userPatch.password || 'The password confirmation does not match.']"
                                         validate-on-blur
                                 />
                             </v-col>
                         </v-row>
                     </v-form>
                 </v-card-text>
-                <div class="text-center mb-6">
-                    <v-btn rounded color="primary" @click.prevent="registerNewUser">SIGN UP</v-btn>
-                </div>
+                <v-container class="text-center ma-0 mb-6">
+                    <v-btn rounded color="secondary" class="ma-3" @click.prevent="patchUser">Update User</v-btn>
+                    <v-btn rounded color="grey" class="ma-3" @click.prevent="toMe">Cancel</v-btn>
+                </v-container>
             </v-col>
         </v-row>
         <v-snackbar

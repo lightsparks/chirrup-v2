@@ -10,13 +10,17 @@
                     prepend-icon="fas fa-search"
                     type="text"
                     color="secondary"
-                    :rules="[formRules.required, formRules.minChars(3), formRules.maxChars(26)]"
+                    :rules="[formRules.minChars(3), formRules.maxChars(26)]"
                     validate-on-blur
                     v-model="searchForm.search_string"
             />
         </v-form>
         <v-container class="d-flex justify-center">
             <v-btn rounded color="primary" @click.prevent="searchUsers">Search</v-btn>
+        </v-container>
+
+        <v-container align="center" justify="center">
+            {{ message }}
         </v-container>
 
         <v-row align="center" justify="center">

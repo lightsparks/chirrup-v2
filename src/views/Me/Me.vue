@@ -11,7 +11,7 @@
                     <!--                    <v-card-text>{{ item.message }}</v-card-text>-->
                     <v-card-actions class="d-flex justify-center">
                         <v-btn
-                                rounded color="#4d908e"
+                                rounded color="grey"
                                 class="white--text subtitle-2 pl-4 pr-5"
                                 @click.prevent="toUpdateInfo"
                         >
